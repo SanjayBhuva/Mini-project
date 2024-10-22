@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./sanjay.css">
+    <title>Appointment Booking System</title>
+</head>
+<body>
+    <header>
+        <h1>Student-Teacher Booking Appointment System</h1>
+    </header>
+    <main>
+        <section id="registration">
+            <h2>Register</h2>
+            <form id="registerForm">
+                <input type="text" id="studentName" placeholder="Your Name" required>
+                <input type="email" id="studentEmail" placeholder="Your Email" required>
+                <input type="password" id="studentPassword" placeholder="Password" required>
+                <button type="submit">Register</button>
+            </form>
+        </section>
+
+        <section id="login">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <input type="email" id="loginEmail" placeholder="Your Email" required>
+                <input type="password" id="loginPassword" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+        </section>
+
+        <section id="searchTeacher">
+            <h2>Search Teacher</h2>
+            <input type="text" id="teacherSearch" placeholder="Search by name or department">
+            <button id="searchButton">Search</button>
+            <div id="teacherResults"></div>
+        </section>
+
+        <section id="bookAppointment">
+            <h2>Book Appointment</h2>
+            <form id="appointmentForm">
+                <select id="teacherSelect" required></select>
+                <input type="datetime-local" id="appointmentTime" required>
+                <textarea id="appointmentPurpose" placeholder="Purpose of Appointment"></textarea>
+                <button type="submit">Book Appointment</button>
+            </form>
+        </section>
+    </main>
+    <script src="./sanjay.js"></script>
+</body>
+</html>
