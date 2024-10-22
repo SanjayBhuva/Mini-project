@@ -33,6 +33,12 @@ const teachers = [
 ];
 
 // Function to populate teacher options in the appointment form
+const users = [
+    { username: "student1", password: "password123" },
+    { username: "student2", password: "abc123" }
+];
+
+// Function to populate teacher options in the appointment form
 function populateTeachers() {
     const teacherSelect = document.getElementById("teacherSelect");
     teacherSelect.innerHTML = ""; // Clear previous options
@@ -61,15 +67,33 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
     alert("Login successful!");
 });
 
-// Search for teachers
+// Search for teachers with unknown department alert and extra features
 document.getElementById("searchButton").addEventListener("click", function() {
     const query = document.getElementById("teacherSearch").value.toLowerCase();
     const results = teachers.filter(teacher => 
         teacher.name.toLowerCase().includes(query) || 
         teacher.department.toLowerCase().includes(query)
     );
+
     const resultsContainer = document.getElementById("teacherResults");
-    resultsContainer.innerHTML = results.map(teacher => `<p>${teacher.name} - ${teacher.department}</p>`).join("");
+    
+    if (results.length > 0) {
+        resultsContainer.innerHTML = results.map(teacher => `<p>${teacher.name} - ${teacher.department}</p>`).join("");
+    } else {
+        alert("No teachers found in this department.");
+    }
+});
+
+// Clear search results
+document.getElementById("clearSearch").addEventListener("click", function() {
+    const resultsContainer = document.getElementById("teacherResults");
+    resultsContainer.innerHTML = ""; // Clear the results
+});
+
+// Show all teachers button
+document.getElementById("showAll").addEventListener("click", function() {
+    const resultsContainer = document.getElementById("teacherResults");
+    resultsContainer.innerHTML = teachers.map(teacher => `<p>${teacher.name} - ${teacher.department}</p>`).join("");
 });
 
 // Book an appointment
