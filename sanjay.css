@@ -1,15 +1,25 @@
-body {
-    font-family: Arial, sans-serif;
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
     background-color: #f4f4f4;
+    color: #333;
 }
 
 header {
     background: #007bff;
-    color: white;
-    padding: 10px 20px;
+    color: #fff;
+    padding: 20px 0;
     text-align: center;
+}
+
+h1 {
+    margin-bottom: 10px;
 }
 
 main {
@@ -17,30 +27,108 @@ main {
 }
 
 section {
-    margin: 20px 0;
-    padding: 20px;
-    background: white;
-    border-radius: 5px;
+    background: #fff;
+    border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 20px;
 }
 
-input, textarea, select {
-    width: 100%;
+h2 {
+    margin-bottom: 15px;
+    color: #007bff;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="datetime-local"],
+textarea,
+select {
     padding: 10px;
-    margin: 5px 0;
+    margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    font-size: 16px;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="datetime-local"]:focus,
+textarea:focus,
+select:focus {
+    border-color: #007bff;
+    outline: none;
 }
 
 button {
-    background: #007bff;
-    color: white;
-    border: none;
     padding: 10px;
+    background: #007bff;
+    color: #fff;
+    border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
 }
 
 button:hover {
     background: #0056b3;
+}
+
+#teacherResults {
+    margin-top: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #f9f9f9;
+}
+
+#teacherResults p {
+    margin: 5px 0;
+}
+
+@media (min-width: 768px) {
+    section {
+        padding: 30px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    #searchTeacher, #bookAppointment {
+        flex: 1;
+        margin-right: 10px;
+    }
+
+    #searchTeacher:last-child, #bookAppointment:last-child {
+        margin-right: 0;
+    }
+
+    form {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="datetime-local"],
+    textarea,
+    select {
+        flex: 1;
+        min-width: 200px;
+        margin: 10px;
+    }
+
+    button {
+        flex-basis: 100%;
+        margin-top: 10px;
+    }
 }
