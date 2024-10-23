@@ -1,4 +1,4 @@
-const teachers = [
+ const teachers = [
     { name: "John Doe", department: "Mathematics", email: "johndoe@example.com" },
     { name: "Jane Smith", department: "Biology", email: "janesmith@example.com" },
     { name: "Jane Allice", department: "Physics", email: "janeallice@example.com" },
@@ -193,4 +193,44 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
     }
 });
 
+// Admin adds a new teacher
+document.getElementById("addTeacherForm").addEventListener("submit", function(event) {
+    event.preventDefault();
 
+    const name = document.getElementById("teacherName").value;
+    const department = document.getElementById("teacherDepartment").value;
+    const email = document.getElementById("teacherEmail").value;
+    const rating = 0; // Default rating for new teachers
+
+    if (!name || !department || !email) {
+        alert("Please fill in all fields.");
+        return;
+    }
+
+    const newTeacher = { name, department, email, rating, numRatings: 0 };
+    teachers.push(newTeacher);
+    localStorage.setItem('teachers', JSON.stringify(teachers));
+
+    alert("Teacher added successfully!");
+    document.getElementById("addTeacherForm").reset();
+});
+// Simulate sending an email after booking an appointment
+function sendEmailNotification(teacherEmail, studentEmail, appointmentDetails) {
+    alert(`Email sent to ${teacherEmail} and ${studentEmail} with the following details:\n${appointmentDetails}`);
+}
+
+// Call this function after booking an appointment
+document.getElementById("appointmentForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    
+    const teacherName = document.getElementById("teacherSelect").value;
+    const time = document.getElementById("appointmentTime").value;
+    const purpose = document.getElementById("appointmentPurpose").value;
+    
+    const selectedTeacher = teachers.find(teacher => teacher.name === teacherName);
+    const loggedInUser = users.find(user => user.email === document.getElementById("loginEmail").value);
+
+    const appointmentDetails = `Appointment booked with ${selectedTeacher.name} on ${time} for ${purpose}.`;
+
+    sendEmailNotification(selectedTeacher.email, loggedInUser.email, appointmentDetails);
+});
